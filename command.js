@@ -14,7 +14,7 @@ exports.exec = async (client, args, command, message) => {
         if (dirent.name == command + ".js") {
             try {
                 let cmd = require(`./cmds/${dirent.name}`)
-                cmd.command(client, args, command, message)
+                cmd.run(client, args, command, message)
             } catch (e) {
                 console.log(e)
             }
