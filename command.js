@@ -6,8 +6,6 @@ exports.init = async () => {
 
 exports.exec = async (client, args, command, message) => {
 
-    filters.run(client, args, command, message);
-
     if (!message.content.startsWith(configs.prefix)) return
 
     const dir = await fs.promises.opendir(__dirname + "/cmds/");
