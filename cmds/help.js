@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 
-exports.command = async (client, args, command, message) => {
+exports.run = async (client, args, command, message) => {
 
     let commands = [];
 
