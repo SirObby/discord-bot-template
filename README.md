@@ -11,4 +11,6 @@ A simple and powerful multifile Discord.JS bot template
 ## Contributing
 
 If for some reason you decided to make my command handler **better** and **faster** (highly recommended)
-Make a Pull Request. (but make sure the usage of the command handler dosen't change.)
+1. Make a Pull Request.
+2. Make sure the usage of the command handler dosen't change
+3. Wait. (im not a github maestro come tell me to accept your PR on discord `Sir Obsidian#2640`)
