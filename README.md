@@ -5,7 +5,7 @@ A simple and powerful multifile Discord.JS bot template
 
 1. Clone this rep
 2. Change the token, prefix and botowner(userid) in **config.json**
-3. install the packages with **npm i**
+3. install the packages with **npm i discord.js**
 4. Run the bot with **node bot**
 
 ## Contributing
