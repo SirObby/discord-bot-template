@@ -1,9 +1,13 @@
 const Discord = require('discord.js');
 
-exports.run = async (client, args, command, message) => {
+exports.init = (command) => {
+    console.log(`${command} has been initialised!`)
+}
 
-    const msg = await message.channel.send('Pinging...');
+exports.execute = (message, command, args, client) => {
 
-    msg.edit(`Latency is: ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms`);
+    message.channel.send('Pinging...').then (msg => {
+        msg.edit(`Latency is: ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms`);
+    })
 
 }
