@@ -1,36 +1,42 @@
-const fs = require('fs');
-const configs = require('./config.json');
-exports.init = async () => {
-    console.log("Command Handler has started!")
+const configs = require('./configs.json')
+let cache = []
+let prefix = configs.prefix
+
+exports.init = () => {
+
+    console.log("Commands Initialized!")
+
 }
 
-exports.exec = async (client, args, command, message) => {
+exports.exec = (message, client) => {
 
-    if (!message.content.startsWith(configs.prefix)) return
+    const args = message.content.slice(prefix.length).trim().split(' ');
+    const command = args.shift().toLowerCase();
 
-    const dir = await fs.promises.opendir(__dirname + "/cmds/");
-    for await (const dirent of dir) {
-        if (!dirent.isFile) return;
-        if (dirent.name == command + ".js") {
-            try {
-                let cmd = require(`./cmds/${dirent.name}`)
-                cmd.run(client, args, command, message)
-            } catch (e) {
-                console.log(e)
+    try {
+
+        const cmd = require(`./cmds/${command}.js`)
+
+        if (configs.autoupdate) {
+
+            delete require.cache[require.resolve(`./cmds/${command}.js`)];
+            cmd.init(command)
+
+        } else {
+
+            if (!cache.includes(command)) {
+                cache.push(command)
+                cmd.init(command)
+
             }
-        }
-    }
 
-    if (command == "reload") {
-        if (message.author.id == configs.botowner) {
-            if (args[0]) {
-                delete require.cache[require.resolve(`./cmds/${args[0]}.js`)];
-                message.channel.send(` Reloading command ${quote}${args[0]}${quote}`)
-                console.log(`Reloading ${args[0]}`)
-            }else {
-                message.channel.send("Missing argument")
-            }
         }
-    }
 
+        cmd.execute(message, command, args, client)
+
+    } catch (e) {
+
+        console.log(e)
+
+    }
 }
