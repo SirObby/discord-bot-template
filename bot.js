@@ -1,22 +1,21 @@
 const Discord = require('discord.js');
-const configs = require('./config.json');
-const commandHandler = require('./command.js');
-
 const client = new Discord.Client();
+const configs = require('./configs.json')
 
-client.on('ready', async () => {
+const command = require('./command.js')
+
+client.on('ready', () => {
+ 
     console.log(`Logged in as ${client.user.tag}!`);
-    commandHandler.init();
-  });
-  
-client.on("message", async message => {
-
-    if (message.author.bot) return;
-
-    const args = message.content.slice(configs.prefix.length).trim().split(' ');
-    const command = args.shift().toLowerCase();
+    command.init()
     
-    commandHandler.exec(client, args, command, message) 
 });
 
-client.login(configs.token)
+client.on('message', message => {
+
+    if (message.author.bot == true) return;
+    if(message.content.startsWith(configs.prefix) {
+       command.exec(message, client);
+       }
+
+});
