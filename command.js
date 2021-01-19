@@ -1,4 +1,4 @@
-const configs = require('./configs.json')
+const configs = require('./config.json')
 let cache = []
 let prefix = configs.prefix
 
