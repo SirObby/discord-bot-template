@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const configs = require('./configs.json')
+const configs = require('./config.json')
 
 const command = require('./command.js')
 
