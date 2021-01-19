@@ -14,7 +14,7 @@ client.on('ready', () => {
 client.on('message', message => {
 
     if (message.author.bot == true) return;
-    if(message.content.startsWith(configs.prefix) {
+    if(message.content.startsWith(configs.prefix)) {
        command.exec(message, client);
        }
 
