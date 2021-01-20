@@ -1,5 +1,7 @@
 {
     "token": "",
     "prefix": "",
-    "autoupdate": false
+    "autoupdate": false,
+    "statuses": ["SirObby_", "Discord Bot Template", "Github or something"],
+    "autostatus": true
 }
